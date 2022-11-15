@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开一下</title>
+    <style>
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+        .btn-info:hover {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #269abc;
+        }
+        .btn.focus, .btn:focus, .btn:hover {
+            text-decoration: none;
+        }
+        .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+        /*success*/
+        .btn-success:hover {
+            color: #fff;
+            background-color: #449d44;
+            border-color: #398439;
+        }
+        .btn.focus, .btn:focus, .btn:hover {
+            text-decoration: none;
+        }
+        .btn-success {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+        /*danger*/
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+
+        .btn.focus, .btn:focus, .btn:hover {
+            text-decoration: none;
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+        /*form-group*/
+        .form-control:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+            box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+        }
+        textarea.form-control {
+            height: auto;
+        }
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+            box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+            -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        }
+        .ipt {
+            width: 300px;
+            margin-top: 20px;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn-info" onclick="test()">测试</button>
+    <button class="btn btn-success" onclick="openDoor()">打开</button>
+    <button class="btn btn-danger" onclick="getPwd()">紧急密码开门</button>
+    <textarea id="msg" class="form-control ipt"></textarea>
+    <script>
+        var token = 'eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ik5vIHBlcm1pc3Npb24iLCJzdWIiOiIxNzc4NDgxNzk5NSIsImV4cCI6MTY2NDYyNTM2OX0.SdR1sCFxqZRk9-rF25iqqgSmNVgYma8V316lGEAaXR1i2gqcHhM_ZPjSbQzlRrERLQckQfi6M4heGE0w6L42DA'
+
+        async function test() {
+            var res = await requestAPI('https://pabaspmj.szxhdz.com:18000/xhapp/service/iacs/info/host/people/findFreezeAndActiveAppNew', {"peopleId":"046e15d6-ac5e-4f9f-9bca-ac59ee233651"})
+            var data = JSON.parse(res)
+            if (data.code === '000000') {
+                showMsg('成功：\n' + data.data[0].hostAddress)
+            } else {
+                showMsg('异常：\n' + data.data[0].hostAddress)
+            }
+        }
+        async function openDoor() {
+            var res = await requestAPI('https://pabaspmj.szxhdz.com:18000/xhapp/service/iacs/info/house/host/commandByHouseHostId', {"houseHostId":"a3f7ed60-52c2-4446-928b-daa463c50773","peopleId":"046e15d6-ac5e-4f9f-9bca-ac59ee233651","roleType":"0"})
+            var data = JSON.parse(res)
+            if (data.code === '000000') {
+                showMsg('成功：\n' + data.message + ' 仅供内部使用，请勿用于非法用途')
+            } else {
+                showMsg('异常：\n' + data.message)
+            }
+        }
+        async function getPwd() {
+            showMsg('暂未开放，敬请期待')
+        }
+        async function requestAPI(url, data) {
+            return new Promise(reslve => {
+                var xhr = new XMLHttpRequest()
+                xhr.open('POST', url + '?token=' + token)
+                xhr.setRequestHeader('content-type', 'application/json')
+                xhr.setRequestHeader('token', token)
+                xhr.onreadystatechange = function() {
+                    if (xhr.status === 200 && xhr.readyState === 4) {
+                        console.log(xhr.response)
+                        reslve(xhr.response)
+                    }
+                }
+                xhr.send(typeof data === 'object' ? JSON.stringify(data) : data)
+            })
+        }
+        function showMsg(msg) {
+            var areaMsg = document.getElementById("msg")
+            areaMsg.value = msg
+        }
+    </script>
+</body>
+</html>
