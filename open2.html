@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://www.mitayou.com/static/open2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开一下</title>
+    <style>
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+
+        .btn-info:hover {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #269abc;
+        }
+
+        .btn.focus,
+        .btn:focus,
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        .btn.active.focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn:active:focus,
+        .btn:focus {
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+
+        /*success*/
+        .btn-success:hover {
+            color: #fff;
+            background-color: #449d44;
+            border-color: #398439;
+        }
+
+        .btn.focus,
+        .btn:focus,
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+        /*danger*/
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+
+        .btn.focus,
+        .btn:focus,
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+
+        /*form-group*/
+        .form-control:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+            box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+        }
+
+        textarea.form-control {
+            height: auto;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+            box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        }
+
+        .ipt {
+            width: 500px;
+            margin-top: 20px;
+            min-height: 500px;
+        }
+    </style>
+<style type="text/css">#_copy{align-items:center;background:#4494d5;border-radius:3px;color:#fff;cursor:pointer;display:flex;font-size:13px;height:30px;justify-content:center;position:absolute;width:60px;z-index:1000}#select-tooltip,#sfModal,.modal-backdrop,div[id^=reader-helper]{display:none!important}.modal-open{overflow:auto!important}._sf_adjust_body{padding-right:0!important}.super_copy_btns_div{position:fixed;width:154px;left:10px;top:45%;background:#e7f1ff;border:2px solid #4595d5;font-weight:600;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;z-index:5000}.super_copy_btns_logo{width:100%;background:#4595d5;text-align:center;font-size:12px;color:#e7f1ff;line-height:30px;height:30px}.super_copy_btns_btn{display:block;width:128px;height:28px;background:#7f5711;border-radius:4px;color:#fff;font-size:12px;border:0;outline:0;margin:8px auto;font-weight:700;cursor:pointer;opacity:.9}.super_copy_btns_btn:hover{opacity:.8}.super_copy_btns_btn:active{opacity:1}</style></head>
+
+<body>
+    <button class="btn btn-info" onclick="test()">测试</button>
+    <button class="btn btn-success" onclick="openDoor()">打开</button>
+    <button class="btn btn-danger" onclick="getPwd()">紧急密码开门</button>
+    <textarea id="msg" class="form-control ipt"></textarea>
+    <script>
+        var token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzYyOTEwMzMsImV4cCI6MTcwNzgyNzAzMywiYXVkIjoidXNlciIsInVpZCI6IjY3QkFCMDZCNTBBRjFBQzBGRkQ3OUVDQzhDNTVFQkEzIiwicGhvbmUiOiIxNzYyMDQ5Mzc3NyJ9.TqtxnoL8ufe2MlyUK5cC--SvBaLwvbp9mEFLShglpF0TOpWzeUEaLzO5t379ksR6Aj93MqqPqXd56QKgj4IN6gCHoi6Gu1BUxAhKOMZLval_tq2T6RW-_RxkJsHm5GnCQekgM9SPgSN-bCPLfT9W0rco8upjCHL1TWrdZESaPKo'
+        // 门ID
+        var gate_uid = "60F62FB44E144D709169F8120585EB82"
+
+        async function test() {
+            const keyInfo = await fetch('https://mitayou.com/opendoor/api/v1/user/keys', {
+                headers: {
+                    'Host': 'smartims-api.heyzhima.com',
+                    'accept': '*/*',
+                    'user-agent': 'FuTianCommunity/2.7.1 (cn.zlp.heyzhima.futian.community; build:1; iOS 16.2.0) Alamofire/5.6.1',
+                    'accept-language': 'zh-Hans-CN;q=1.0',
+                    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzYyOTEwMzMsImV4cCI6MTcwNzgyNzAzMywiYXVkIjoidXNlciIsInVpZCI6IjY3QkFCMDZCNTBBRjFBQzBGRkQ3OUVDQzhDNTVFQkEzIiwicGhvbmUiOiIxNzYyMDQ5Mzc3NyJ9.TqtxnoL8ufe2MlyUK5cC--SvBaLwvbp9mEFLShglpF0TOpWzeUEaLzO5t379ksR6Aj93MqqPqXd56QKgj4IN6gCHoi6Gu1BUxAhKOMZLval_tq2T6RW-_RxkJsHm5GnCQekgM9SPgSN-bCPLfT9W0rco8upjCHL1TWrdZESaPKo'
+                }
+            })
+            const keyJson = await keyInfo.json()
+
+            if (keyJson.code === 200) {
+                showMsg('成功：\n' + keyJson.data[0].building_name)
+                gate_uid = keyJson.data[0].gate_uid
+            } else {
+                showMsg('异常：\n' + keyJson.data[0].building_name)
+            }
+        }
+        async function openDoor() {
+            var res = await fetch('https://mitayou.com/opendoor/api/v2/gate/open', {
+                method: 'POST',
+                headers: {
+                    'Host': 'smartims-api.heyzhima.com',
+                    'accept': '*/*',
+                    'content-type': 'application/json',
+                    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzYyOTEwMzMsImV4cCI6MTcwNzgyNzAzMywiYXVkIjoidXNlciIsInVpZCI6IjY3QkFCMDZCNTBBRjFBQzBGRkQ3OUVDQzhDNTVFQkEzIiwicGhvbmUiOiIxNzYyMDQ5Mzc3NyJ9.TqtxnoL8ufe2MlyUK5cC--SvBaLwvbp9mEFLShglpF0TOpWzeUEaLzO5t379ksR6Aj93MqqPqXd56QKgj4IN6gCHoi6Gu1BUxAhKOMZLval_tq2T6RW-_RxkJsHm5GnCQekgM9SPgSN-bCPLfT9W0rco8upjCHL1TWrdZESaPKo',
+                    'user-agent': 'FuTianCommunity/2.7.1 (cn.zlp.heyzhima.futian.community; build:1; iOS 16.2.0) Alamofire/5.6.1',
+                    'accept-language': 'zh-Hans-CN;q=1.0'
+                },
+                body: JSON.stringify({
+                    'gate_uid': '60F62FB44E144D709169F8120585EB82'
+                })
+            });
+            const data = await res.json()
+            if (data.code === 200) {
+                showMsg('成功：\n' + data.msg + ' 仅供内部使用，请勿用于非法用途\n' + JSON.stringify(data.data.openface))
+            } else {
+                showMsg('异常：\n' + data.msg)
+            }
+        }
+        async function getPwd() {
+            showMsg('暂未开放，敬请期待')
+        }
+        function showMsg(msg) {
+            var areaMsg = document.getElementById("msg")
+            areaMsg.value = msg
+        }
+    </script>
+
+
+</body></html>
